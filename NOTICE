@@ -1,0 +1,14 @@
+vsmath - vector single math
+Copyright 2026 Eudox67
+
+This product is a derivative work of Vmath:
+
+  Copyright (c) 2026 Eudox67. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+vsmath derives from Vmath (Vector Math), which was a fork, and
+modification of mrMath and so retains the original copyright notice
+and the Apache License 2.0.
+
+The library was ported from double precision (64-bit) to single
+precision (Float32), targeted at 32-bit Free Pascal({$mode objfpc}).

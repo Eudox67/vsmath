@@ -1,0 +1,19 @@
+# Compiled output
+*.o
+*.ppu
+*.a
+*.or
+*.rs
+*.compiled
+
+# Build and package output
+lib/
+units/
+build/*/units/
+target/
+*.fpm
+/fpmake
+
+# Test binaries and logs
+tests/bin/
+tests/*.log
