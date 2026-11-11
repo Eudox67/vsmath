@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="vsmath"/>
+    <Type Value="RunTime"/>
+    <Author Value="vsmath Contributors"/>
+    <License Value="Apache-2.0"/>
+    <Description Value="Single-precision SIMD matrix/vector math for Free Pascal"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="src"/>
+        <IncludeFiles Value="src"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <Mode Value="ObjFPC"/>
+        </SyntaxOptions>
+      </Parsing>
+      <Other>
+        <CustomOptions Value="-Mobjfpc -Sh"/>
+      </Other>
+    </CompilerOptions>
+    <Files>
+      <Item>
+        <Filename Value="src/ASMMatrixAbsOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixAbsOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixAddSubOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixAddSubOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixCumSumDiffOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixCumSumDiffOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixElementwiseMultOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixElementwiseMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixMeanOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixMeanOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixMinMaxOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixMinMaxOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixMultOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixMultTransposedOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixMultTransposedOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixNormOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixNormOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixRotationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixRotationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixScaleOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixScaleOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixSqrtOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixSqrtOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixSumOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixSumOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixTransposeOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixTransposeOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMatrixVectorMultOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMatrixVectorMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMMoveOperationsSinglex64.pas"/>
+        <UnitName Value="ASMMoveOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMVecConvolveSinglex64.pas"/>
+        <UnitName Value="ASMVecConvolveSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/ASMVecDistSinglex64.pas"/>
+        <UnitName Value="ASMVecDistSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXFFT.pas"/>
+        <UnitName Value="AVXFFT"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixAbsOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixAbsOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixAddSubOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixAddSubOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixCumSumDiffOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixCumSumDiffOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixElementwiseMultOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixElementwiseMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixMeanOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixMeanOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixMinMaxOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixMinMaxOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixMultOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixMultTransposedOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixMultTransposedOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixNormOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixNormOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixRotationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixRotationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixScaleOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixScaleOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixSqrtOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixSqrtOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixSumOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixSumOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixTransposeOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixTransposeOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMatrixVectorMultOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMatrixVectorMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXMoveOperationsSinglex64.pas"/>
+        <UnitName Value="AVXMoveOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXRowMajorMultSinglex64.pas"/>
+        <UnitName Value="AVXRowMajorMultSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/AVXVecConvolveSinglex64.pas"/>
+        <UnitName Value="AVXVecConvolveSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/CPUFeaturesSingle.pas"/>
+        <UnitName Value="CPUFeaturesSingle"/>
+      </Item>
+      <Item>
+        <Filename Value="src/FMAMatrixMultOperationsSinglex64.pas"/>
+        <UnitName Value="FMAMatrixMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/FMAMatrixMultTransposedOperationsSinglex64.pas"/>
+        <UnitName Value="FMAMatrixMultTransposedOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/FMAMatrixVectorMultOperationsSinglex64.pas"/>
+        <UnitName Value="FMAMatrixVectorMultOperationsSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/FMAVecConvolveSinglex64.pas"/>
+        <UnitName Value="FMAVecConvolveSinglex64"/>
+      </Item>
+      <Item>
+        <Filename Value="src/MatrixASMDispatchSingle.pas"/>
+        <UnitName Value="MatrixASMDispatchSingle"/>
+      </Item>
+      <Item>
+        <Filename Value="src/MatrixConstSingle.pas"/>
+        <UnitName Value="MatrixConstSingle"/>
+      </Item>
+    </Files>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
