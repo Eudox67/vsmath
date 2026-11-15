@@ -1,5 +1,14 @@
 # vsmath - vector single math
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+![Free Pascal](https://img.shields.io/badge/Free_Pascal-3.2.2%2B-orange)
+![Lazarus](https://img.shields.io/badge/Lazarus-vsmath.lpk-1E5AA8)
+![Platform](https://img.shields.io/badge/Platform-Linux_x86--64-555555?logo=linux&logoColor=white)
+![Precision](https://img.shields.io/badge/Precision-Float32-blueviolet)
+![SIMD](https://img.shields.io/badge/SIMD-SSE_%7C_AVX_%7C_FMA-007EC6)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-teal)
+![Tests](https://img.shields.io/badge/FPCUnit-118_tests-brightgreen)
+
 **vsmath** is a SIMD matrix and vector math library for Free Pascal
 (`{$mode objfpc}`) that targets **32-bit single precision (Float32)**. It is
 the CPU SIMD backend for AI inference workloads: the kernels stay in single
@@ -7,7 +16,7 @@ precision end to end (no double round trips), widths and strides are byte
 counts, and every routine is inline x86 assembler behind a small Pascal API.
 
 All 44 units compile on `x86_64-linux` (`fpmake compile`); the SSE and AVX 
-kernels are covered by a 125 test fpcunit suite, all green and heap-leak clean, 
+kernels are covered by a 118 test fpcunit suite, all green and heap-leak clean, 
 including guard-page checks for the matrix-vector, transposed matrix-vector, rank-1 
 and copy families. The public entry points in `MatrixASMDispatchSingle` take any 
 width, height and stride - no parity or alignment argument ever reaches the caller. 
@@ -38,10 +47,11 @@ vsmath/
     TestVsMathAVX.pas        fpcunit test case (x86_64 AVX kernels)
     TestVsMathDispatch.pas   fpcunit test case (CPU level dispatch, all levels)
     TestVsMathGuard.pas      guard page harness: buffers flush against PROT_NONE
-    TestVsMathFFT.pas        fpcunit test case (AVX FFT, against a DFT reference)
     GuardPage.pas            the mmap/mprotect helper that harness uses
     testrunner.pas           console test runner
     run_tests.sh             build + run the suite (heaptrc enabled)
+  tools/
+    vsmath-units.txt         package unit list (single source of truth)
   fpmake.pp                  FPC package manifest (fpmake)
   vsmath.lpk                 Lazarus package
   vsmath.cfg                 plain fpc config fragment (-Fu/-Fi)
@@ -57,8 +67,8 @@ fpc fpmake.pp
 ./fpmake install --prefix=$HOME/.local
 ```
 
-The 44 units are defined by the `AddUnit` calls in `fpmake.pp` and the `<Files>`
-block in `vsmath.lpk`; keep the two in step when a unit is added.
+The unit list lives in `tools/vsmath-units.txt`; regenerate the `AddUnit` calls
+in `fpmake.pp` and `vsmath.lpk` from it when units are added.
 
 `./fpmake compile` is the packaging check that runs against this release
 (`[100%] Compiled package vsmath`, all 44 units); it needs no external package. 
@@ -77,19 +87,8 @@ the package root (or edit the two `-Fu`/`-Fi` lines).
 
 ### 3. Lazarus
 
-**IDE:** *Package -> Open Package File (.lpk)* -> `vsmath.lpk` -> *Compile* ->
-*Use -> Add to Project*, which adds `vsmath` (type `RunTime`) to the project's
-required packages.
-
-```bash
-# headless: make the package visible to the package graph, then build it
-lazbuild --add-package-link vsmath.lpk
-lazbuild vsmath.lpk            # -> lib/x86_64-linux/*.ppu
-```
-
-The package exports `src` as its unit path and compiles one `.ppu` per unit plus
-`vsmath.ppu`. Lazarus writes the package main unit `vsmath.pas` on every build
-from the `.lpk` file list: keep it committed, never edit it.
+Package -> Open package file -> `vsmath.lpk`, then add `vsmath` to the
+project's required packages.
 
 ### API conventions
 
@@ -141,8 +140,7 @@ MatrixAdd(dst, dstLineWidth, a, b, width, height, lwA, lwB);
 | dot product | `ASMMatrixVectorMultOperationsSinglex64` | yes | yes |
 | const helpers | `MatrixConstSingle` | yes | yes |
 | abs, rotations | `ASMMatrixAbsOperationsSinglex64`, `ASMMatrixRotationsSinglex64` | yes | yes |
-| sqrt, sum, cumsum/diff, norm, convolve, distance, mult, move | `ASM*Singlex64` | yes | convolve yes, rest no |
-| FFT (radix-2, power-of-two sizes) | `AVXFFT` | yes | yes (`tests/TestVsMathFFT.pas`, against a DFT reference) |
+| sqrt, sum, cumsum/diff, norm, convolve, distance, mult, move, FFT | `ASM*Singlex64` | yes | convolve yes, rest no |
 | transpose | `ASMMatrixTransposeOperationsSinglex64` | yes | yes (8 entry points, inplace) |
 | AVX abs / add / sub / scale / add-scale / elementwise mult+div / sqrt | `AVX*Singlex64` | yes | yes |
 | AVX sum-column, mean-row, variance-row, norm2, min/max | `AVX*Singlex64` | yes | yes |
@@ -159,7 +157,7 @@ MatrixAdd(dst, dstLineWidth, a, b, width, height, lwA, lwB);
 ## Tests
 
 ```bash
-./tests/run_tests.sh              # build + run: 125 tests (23 SSE + 43 AVX/SSE + 30 dispatch + 22 guard page + 7 FFT)
+./tests/run_tests.sh              # build + run: 118 tests (23 SSE + 43 AVX/SSE + 30 dispatch + 22 guard page)
 fpc fpmake.pp && ./fpmake compile # packaging build: all 44 units
 ```
 
@@ -170,12 +168,7 @@ fpc fpmake.pp && ./fpmake compile # packaging build: all 44 units
   exact square roots), so a pass means the kernel computes the same values, not
   merely "close enough".
 - The AVX tests live in `tests/TestVsMathAVX.pas` and skip themselves with
-  `Ignore()` on a CPU without AVX (they are raw AVX code, they would fault);
-  `tests/TestVsMathFFT.pas` does the same for `AVX_FFT_Execute`.
-- The FFT is compared against a naive `O(N^2)` DFT for every power-of-two size
-  from 2 to 32, for one batched call, and on a shifted impulse whose imaginary
-  bins a butterfly pass that drops the imaginary half of the data would return
-  as zero.
+  `Ignore()` on a CPU without AVX (they are raw AVX code, they would fault).
 - Over-reads and over-writes are caught by a poisoned pad behind the live data
   (`cPoison`): a kernel that leaves its buffers pays for it with a wrong result
   instead of silently reading zeros. The pad is checked after every call.
